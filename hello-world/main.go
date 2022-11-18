@@ -7,7 +7,7 @@ const englishHelloPrefix = "Hello, "
 // seperating domain from the side-effect
 func Hello (name string) string{
 	if(name == ""){
-		return "Hello world"
+		return "Hello, world"
 	}
 	return englishHelloPrefix + name
 }
