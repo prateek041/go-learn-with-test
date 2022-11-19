@@ -27,6 +27,11 @@ func TestHello(t *testing.T){ // t of type *testing.T is the hook, to use t.<met
 		want := "Bonjour, prateek"
 		assertCorrectMessage(t, got, want)
 	})
+	t.Run("in Hindi", func(t *testing.T){
+		got := Hello("prateek", "Hindi")
+		want := "Namaste, prateek"
+		assertCorrectMessage(t, got, want)
+	})
 }
 
 func assertCorrectMessage(t testing.TB, got, want string){
