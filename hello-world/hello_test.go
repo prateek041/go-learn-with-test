@@ -9,16 +9,19 @@ func TestHello(t *testing.T){ // t of type *testing.T is the hook, to use t.<met
 		got := Hello("nihal")
 		want := "Hello, nihal"
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertCorrectMessage(t, got, want)
 	})
 	t.Run("when the string is emply. return hello world", func(t *testing.T){
 		got:= Hello("")
 		want:= "Hello, world"
 
-		if got!= want{
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertCorrectMessage(t, got, want)
 	})
+}
+
+func assertCorrectMessage(t testing.TB, got, want string){
+	t.Helper() // we add this to tell the test suit that it is a helper functiona. if it fails, the function call line is reported.
+	if got!=want{
+		t.Errorf("got %q wanted %q", got, want)
+	}
 }
