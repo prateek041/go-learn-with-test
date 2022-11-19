@@ -10,17 +10,9 @@ func TestSumArray(t *testing.T){
 		want:= 15
 		assertMessageConstructor(t, got, want, numbers)
 	})
-
-	t.Run("Array of size 53", func(t *testing.T){
-		numbers:= [3]int{1, 2, 3}
-
-		got:= SumArray(numbers)
-		want:= 6
-		assertMessageConstructor(t, got, want, numbers)
-	})
 }
 
-func assertMessageConstructor(t *testing.TB, got, want int, numbers []int){
+func assertMessageConstructor(t testing.TB, got, want int, numbers []int){
 	t.Helper()
 	if got!=want{
 		t.Errorf("got %d expected %d when passed %v", got, want, numbers)
