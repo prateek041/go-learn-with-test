@@ -6,15 +6,25 @@ import "testing"
 
 func TestHello(t *testing.T){ // t of type *testing.T is the hook, to use t.<method>
 	t.Run("Saying hello to people with name", func(t *testing.T){
-		got := Hello("nihal")
+		got := Hello("nihal", "")
 		want := "Hello, nihal"
 
 		assertCorrectMessage(t, got, want)
 	})
-	t.Run("when the string is emply. return hello world", func(t *testing.T){
-		got:= Hello("")
+	t.Run("when the string is empty. return hello world", func(t *testing.T){
+		got:= Hello("", "")
 		want:= "Hello, world"
 
+		assertCorrectMessage(t, got, want)
+	})
+	t.Run("in spanish", func(t *testing.T){
+		got := Hello("prateek", "Spanish")
+		want := "Hola, prateek"
+		assertCorrectMessage(t, got, want)
+	})
+	t.Run("in French", func(t *testing.T){
+		got := Hello("prateek", "French")
+		want := "Bonjour, prateek"
 		assertCorrectMessage(t, got, want)
 	})
 }
