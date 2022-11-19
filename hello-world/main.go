@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 const spanish = "Spanish"
-const French = "French"
+const french = "French"
 const englishHelloPrefix = "Hello, "
 const spanishHelloPrefix = "Hola, "
 const frenchHelloprefix = "Bonjour, "
@@ -11,17 +11,19 @@ const frenchHelloprefix = "Bonjour, "
 // seperating domain from the side-effect
 func Hello (name string, language string) string{
 	if(name == ""){
-		return "Hello, world"
+		name = "world"
 	}
 
-	if language == spanish{
-		return spanishHelloPrefix + name
+	prefix:= englishHelloPrefix
+
+	switch language {
+	case french:
+		prefix = frenchHelloprefix
+	case spanish:
+		prefix = spanishHelloPrefix
 	}
 
-	if language == "French"{
-		return frenchHelloprefix + name
-	}
-	return englishHelloPrefix + name
+	return prefix + name
 }
 
 func main(){
