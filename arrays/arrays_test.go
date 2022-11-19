@@ -1,6 +1,9 @@
 package arrays
 
-import "testing"
+import (
+	"testing"
+	"reflect"
+)
 
 func TestSumArray(t *testing.T){
 	t.Run("Array of any size", func(t *testing.T){
@@ -18,10 +21,10 @@ func TestSumAll(t *testing.T){
 		secondArray  := []int{0, 9}
 
 		got := SumAll(firstArray, secondArray)
-		want := [2]int{3, 9}
+		want := []int{3, 9}
 
-		if got!=want{
-			t.Errorf("wanted %v got %v when passed %v and %v", want, got, firstArray, secondArray)
+		if !reflect.DeepEqual(got, want){
+			t.Errorf("wanted %v got %v", want, got)
 		}
 	})
 }
