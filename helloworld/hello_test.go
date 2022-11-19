@@ -1,4 +1,4 @@
-package main
+package helloworld
 
 import "testing"
 // the testing package is used for automated testing.
