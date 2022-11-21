@@ -65,6 +65,8 @@ func (c Circle) Area() float64{
 - So, in order to calculate that Area we just have to call the function using any type, that can implement it.
 
 # Table driven tests:
+- It is all about running similar test cases using a loop, instead of specifically writing one for each.
+- we have done it in the structs_test.go example.
 
 
 
