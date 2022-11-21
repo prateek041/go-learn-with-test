@@ -2,35 +2,60 @@ package structs
 
 import "testing"
 
-type Rectangle struct{ // this can be accesed through out the program.
-	width float64
-	height float64
-}
-
 func TestPerimeter(t *testing.T){
  	
-	rectangle:= Rectangle{10.0, 10.0} // a variable rectangle, of type Rectangle
+	rectangle:= Rectangle{10.0, 10.0} // an instance of type Rectangle.
 
 	t.Run("perimeter of rectangle", func(t *testing.T){
-		got := Perimeter(rectangle)
+		got := rectangle.Perimeter()
 		want := 40.0
 
 		if want!=got{
 			t.Errorf("got %.2f wanted %.2f", got, want) // here the %.2f is a placeholder where .2 means 2 decimal points
 		}
 	})
+	t.Run("Perimeter of circle", func(t *testing.T){
+		circle := Circle{10} // an instance of type Circle
+
+		got := circle.Perimeter()
+		want := 62.83185307179586
+
+		if want != got{
+			t.Errorf("got %g want %g", got, want)
+		}
+	})
 }
 
 func TestArea(t *testing.T){
 
-	rectangle:= Rectangle{10.0, 10.0} // a variable rectangle, of type Rectangle
-	
-	t.Run("Area of a rectangle", func(t *testing.T){
-		got := Area(rectangle)
-		want := 100.0
+	checkArea := func(t testing.TB, shape Shape, want float64){
+		 t.Helper() // to tell the compiler that this is a helper function.
+		 got := shape.Area()
 
-		if want!= got{
-			t.Errorf("got %.2f wanted %.2f", got, want)
-		}
+		 if got!=want {
+		 	t.Errorf("got %g want %g", got, want)
+		 }
+	}
+
+	t.Run("Area of a rectangle", func(t *testing.T){
+		rectangle := Rectangle{12, 6}
+		checkArea(t, rectangle, 72.0)
+	})
+	t.Run("Area of a circle", func(t *testing.T){
+		circle := Circle{10}
+		checkArea(t, circle, 314.1592653589793)
 	})
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
